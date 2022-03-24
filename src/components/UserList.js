@@ -10,6 +10,39 @@ function UserList() {
         setSelectedUser(user)
     }
 
+    const mappingUsers = (
+        users.map((user, index) => (
+            <tr className="mx-4" key={user.id}>
+                <td>{index + 1}</td>
+                <td>{user.name}</td>
+                <td>
+                    <button
+                        className="btn btn-warning m-2 my-md-0"
+                        onClick={() => editHandler(user)}
+                    >
+                        Edit
+                    </button>
+                    <button
+                        className="btn btn-danger m-2 my-md-0"
+                        onClick={() => deleteUser(index)}
+                    >
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        ))
+    );
+
+    const noUsers = (
+        <tr>
+            <td
+                colspan="3"
+                className="text-center">
+                No Users in the list
+            </td>
+        </tr>
+    )
+
     return <div className="col-md-6">
         <h2>List Of Users: </h2>
         <table className="table">
@@ -21,26 +54,7 @@ function UserList() {
                 </tr>
             </thead>
             <tbody>
-                {users.map((user, index) => (
-                    <tr className="mx-4" key={user.id}>
-                        <td>{index + 1}</td>
-                        <td>{user.name}</td>
-                        <td>
-                            <button
-                                className="btn btn-warning m-2 my-md-0"
-                                onClick={() => editHandler(user)}
-                            >
-                                Edit
-                            </button>
-                            <button
-                                className="btn btn-danger m-2 my-md-0"
-                                onClick={() => deleteUser(index)}
-                            >
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                ))}
+                {users.length > 0 ? mappingUsers : noUsers}
             </tbody>
         </table>
 

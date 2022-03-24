@@ -35,8 +35,8 @@ function AddUserForm() {
         nameRef.current.value = selectedUser.name;
     }, [selectedUser])
 
-    return <div className="col-md-4">
-        <h2>{editMode ? "Edit this User" : "Add New User"}</h2>
+    return <div className="col-md-4 p-5">
+        <h2 className="my-1"><u>{editMode ? "Edit this User" : "Add New User"}</u></h2>
         <form onSubmit={handleSubmit}>
             <div className="my-2">
                 <label>User's name: </label>
